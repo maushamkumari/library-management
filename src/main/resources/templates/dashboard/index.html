@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Dashboard')}"></head>
+<body>
+<div class="app-shell">
+    <nav th:replace="~{fragments/sidebar :: sidebar}"></nav>
+    <main class="content">
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Operational overview for library circulation.</p>
+            </div>
+            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" placeholder="Search books or students"></div>
+            <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+        </header>
+        <section class="stats-grid">
+            <article><i class="fa-solid fa-books"></i><span>Total Books</span><strong th:text="${stats.totalBooks()}">0</strong></article>
+            <article><i class="fa-solid fa-user-graduate"></i><span>Total Students</span><strong th:text="${stats.totalStudents()}">0</strong></article>
+            <article><i class="fa-solid fa-check"></i><span>Available</span><strong th:text="${stats.availableBooks()}">0</strong></article>
+            <article><i class="fa-solid fa-arrow-up-from-bracket"></i><span>Issued</span><strong th:text="${stats.issuedBooks()}">0</strong></article>
+            <article><i class="fa-solid fa-rotate-left"></i><span>Returned</span><strong th:text="${stats.returnedBooks()}">0</strong></article>
+            <article><i class="fa-solid fa-indian-rupee-sign"></i><span>Fine Collection</span><strong th:text="${stats.fineCollection()}">0</strong></article>
+        </section>
+        <section class="panel-grid">
+            <div class="panel"><h2>Circulation</h2><canvas id="circulationChart" th:data-issued="${stats.issuedBooks()}" th:data-returned="${stats.returnedBooks()}" th:data-pending="${stats.pendingReturns()}"></canvas></div>
+            <div class="panel"><h2>Recent Activities</h2><ul class="activity-list"><li th:each="activity : ${activities}"><strong th:text="${activity.title}">Activity</strong><span th:text="${activity.message}">Message</span></li></ul></div>
+        </section>
+    </main>
+</div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>

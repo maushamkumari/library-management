@@ -1,0 +1,13 @@
+{
+  "name": "library-management-system-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Workspace scripts for the Library Management System React frontend and Spring Boot backend.",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "mvn spring-boot:run",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

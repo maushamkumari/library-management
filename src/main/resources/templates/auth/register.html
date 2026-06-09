@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Register')}"></head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-panel wide">
+        <div class="auth-mark"><i class="fa-solid fa-user-plus"></i></div>
+        <h1>Student Registration</h1>
+        <form th:action="@{/register}" th:object="${registerRequest}" method="post" class="row g-3">
+            <div class="col-md-6"><label class="form-label">Full Name</label><input class="form-control" th:field="*{fullName}" required></div>
+            <div class="col-md-6"><label class="form-label">Email</label><input class="form-control" th:field="*{email}" type="email" required></div>
+            <div class="col-md-6"><label class="form-label">Phone</label><input class="form-control" th:field="*{phoneNumber}" required></div>
+            <div class="col-md-6"><label class="form-label">Enrollment Number</label><input class="form-control" th:field="*{enrollmentNumber}" required></div>
+            <div class="col-md-6"><label class="form-label">Password</label><input class="form-control" th:field="*{password}" type="password" required></div>
+            <div class="col-md-6"><label class="form-label">Confirm Password</label><input class="form-control" th:field="*{confirmPassword}" type="password" required></div>
+            <div class="col-12"><button class="btn btn-primary" type="submit"><i class="fa-solid fa-check"></i> Register</button><a class="btn btn-link" th:href="@{/login}">Back to login</a></div>
+        </form>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Book Form')}"></head>
+<body><div class="app-shell"><nav th:replace="~{fragments/sidebar :: sidebar}"></nav><main class="content compact">
+    <header class="topbar"><div><h1 th:text="${book.bookId == null ? 'Add Book' : 'Edit Book'}">Book</h1><p>Maintain catalog details and inventory counts.</p></div></header>
+    <form class="panel form-grid" th:object="${book}" th:action="${book.bookId == null ? '/books' : '/books/' + book.bookId}" method="post">
+        <label>Title<input class="form-control" th:field="*{title}" required></label>
+        <label>Author<input class="form-control" th:field="*{author}" required></label>
+        <label>Publisher<input class="form-control" th:field="*{publisher}"></label>
+        <label>ISBN<input class="form-control" th:field="*{isbn}"></label>
+        <label>Category<select class="form-select" th:field="*{category}"><option th:each="cat : ${categories}" th:value="${cat.categoryName}" th:text="${cat.categoryName}"></option></select></label>
+        <label>Shelf Location<input class="form-control" th:field="*{shelfLocation}"></label>
+        <label>Quantity<input class="form-control" th:field="*{quantity}" type="number" min="0"></label>
+        <label>Available<input class="form-control" th:field="*{availableQuantity}" type="number" min="0"></label>
+        <label class="full">Description<textarea class="form-control" th:field="*{description}" rows="4"></textarea></label>
+        <div class="full"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button><a class="btn btn-link" th:href="@{/books}">Cancel</a></div>
+    </form>
+</main></div><div th:replace="~{fragments/scripts :: scripts}"></div></body></html>

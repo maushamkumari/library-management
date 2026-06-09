@@ -1,0 +1,17 @@
+<nav th:fragment="sidebar" class="sidebar">
+    <a class="brand" th:href="@{/dashboard}">
+        <i class="fa-solid fa-book-open-reader"></i>
+        <span>LibraryMS</span>
+    </a>
+    <a th:href="@{/dashboard}"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a th:href="@{/books}"><i class="fa-solid fa-book"></i><span>Books</span></a>
+    <a th:href="@{/categories}"><i class="fa-solid fa-layer-group"></i><span>Categories</span></a>
+    <a th:href="@{/students}"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+    <a th:href="@{/issues}"><i class="fa-solid fa-arrow-up-from-bracket"></i><span>Issue Book</span></a>
+    <a th:href="@{/returns}"><i class="fa-solid fa-rotate-left"></i><span>Return Book</span></a>
+    <a th:href="@{/reports}"><i class="fa-solid fa-file-export"></i><span>Reports</span></a>
+    <a th:href="@{/profile}"><i class="fa-solid fa-id-card"></i><span>Profile</span></a>
+    <form th:action="@{/logout}" method="post" class="mt-auto">
+        <button class="nav-button" type="submit"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+    </form>
+</nav>

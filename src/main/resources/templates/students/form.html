@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Student Form')}"></head>
+<body><div class="app-shell"><nav th:replace="~{fragments/sidebar :: sidebar}"></nav><main class="content compact">
+    <header class="topbar"><div><h1 th:text="${student.studentId == null ? 'Add Student' : 'Edit Student'}">Student</h1><p>Update identity, contact, and academic metadata.</p></div></header>
+    <form class="panel form-grid" th:object="${student}" th:action="${student.studentId == null ? '/students' : '/students/' + student.studentId}" method="post">
+        <label>Full Name<input class="form-control" th:field="*{fullName}" required></label>
+        <label>Email<input class="form-control" th:field="*{email}" type="email" required></label>
+        <label>Phone<input class="form-control" th:field="*{phone}"></label>
+        <label>Enrollment No<input class="form-control" th:field="*{enrollmentNo}" required></label>
+        <label>Department<input class="form-control" th:field="*{department}"></label>
+        <label>Semester<input class="form-control" th:field="*{semester}"></label>
+        <div class="full"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button><a class="btn btn-link" th:href="@{/students}">Cancel</a></div>
+    </form>
+</main></div><div th:replace="~{fragments/scripts :: scripts}"></div></body></html>

@@ -1,0 +1,5 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Error')}"></head>
+<body class="auth-page"><main class="auth-shell"><section class="auth-panel"><h1 th:text="${status}">Error</h1><p th:text="${message}">Something went wrong.</p><a class="btn btn-primary" th:href="@{/dashboard}">Back to dashboard</a></section></main></body>
+</html>

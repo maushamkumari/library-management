@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Issue Book')}"></head>
+<body><div class="app-shell"><nav th:replace="~{fragments/sidebar :: sidebar}"></nav><main class="content">
+    <header class="topbar"><div><h1>Issue Book</h1><p>Validate availability and student issue limits before checkout.</p></div></header>
+    <form class="panel form-inline" th:object="${issueBookRequest}" th:action="@{/issues}" method="post"><select class="form-select" th:field="*{bookId}"><option th:each="book : ${books}" th:value="${book.bookId}" th:text="${book.title + ' (' + book.availableQuantity + ')'}"></option></select><select class="form-select" th:field="*{studentId}"><option th:each="student : ${students}" th:value="${student.studentId}" th:text="${student.fullName + ' - ' + student.enrollmentNo}"></option></select><input class="form-control" th:field="*{dueDate}" type="date"><button class="btn btn-primary"><i class="fa-solid fa-arrow-up-from-bracket"></i> Issue</button></form>
+    <div class="table-wrap"><table class="table"><thead><tr><th>Issue ID</th><th>Book</th><th>Student</th><th>Issue Date</th><th>Due Date</th><th>Status</th></tr></thead><tbody><tr th:each="issue : ${issues}"><td th:text="${issue.issueId}"></td><td th:text="${issue.bookId}"></td><td th:text="${issue.studentId}"></td><td th:text="${issue.issueDate}"></td><td th:text="${issue.dueDate}"></td><td><span class="badge text-bg-primary" th:text="${issue.status}"></span></td></tr></tbody></table></div>
+</main></div><div th:replace="~{fragments/scripts :: scripts}"></div></body></html>

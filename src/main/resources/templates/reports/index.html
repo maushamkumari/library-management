@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Reports')}"></head>
+<body><div class="app-shell"><nav th:replace="~{fragments/sidebar :: sidebar}"></nav><main class="content">
+    <header class="topbar"><div><h1>Reports</h1><p>Export catalog, student, circulation, and fine data.</p></div><div class="hstack gap-2"><a class="btn btn-outline-primary" th:href="@{/reports/books.pdf}"><i class="fa-solid fa-file-pdf"></i> PDF</a><a class="btn btn-outline-success" th:href="@{/reports/books.xlsx}"><i class="fa-solid fa-file-excel"></i> Excel</a></div></header>
+    <section class="stats-grid"><article><span>Book Report</span><strong th:text="${#lists.size(books)}">0</strong></article><article><span>Student Report</span><strong th:text="${#lists.size(students)}">0</strong></article><article><span>Fine Report</span><strong th:text="${#lists.size(fines)}">0</strong></article></section>
+    <div class="panel"><h2>Fine Details</h2><table class="table"><thead><tr><th>Fine ID</th><th>Student</th><th>Amount</th><th>Status</th></tr></thead><tbody><tr th:each="fine : ${fines}"><td th:text="${fine.fineId}"></td><td th:text="${fine.studentId}"></td><td th:text="${fine.amount}"></td><td th:text="${fine.status}"></td></tr></tbody></table></div>
+</main></div><div th:replace="~{fragments/scripts :: scripts}"></div></body></html>

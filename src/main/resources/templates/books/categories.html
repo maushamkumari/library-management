@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Categories')}"></head>
+<body><div class="app-shell"><nav th:replace="~{fragments/sidebar :: sidebar}"></nav><main class="content">
+    <header class="topbar"><div><h1>Categories</h1><p>Organize the catalog into searchable groups.</p></div></header>
+    <form class="panel form-inline" th:object="${category}" th:action="@{/categories}" method="post"><input class="form-control" th:field="*{categoryName}" placeholder="Category name"><input class="form-control" th:field="*{description}" placeholder="Description"><button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></form>
+    <div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Description</th><th></th></tr></thead><tbody><tr th:each="cat : ${categories}"><td th:text="${cat.categoryName}"></td><td th:text="${cat.description}"></td><td class="actions"><form th:action="@{/categories/{id}/delete(id=${cat.categoryId})}" method="post"><button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button></form></td></tr></tbody></table></div>
+</main></div><div th:replace="~{fragments/scripts :: scripts}"></div></body></html>

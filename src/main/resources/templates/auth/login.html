@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head('Login')}"></head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-panel">
+        <div class="auth-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+        <h1>Library Management</h1>
+        <p class="text-secondary">Sign in to manage circulation, inventory, reports, and student services.</p>
+        <div th:if="${param.error}" class="alert alert-danger">Invalid email or password.</div>
+        <div th:if="${param.registered}" class="alert alert-success">Registration complete. You can sign in now.</div>
+        <div th:if="${param.logout}" class="alert alert-info">You have been logged out.</div>
+        <form th:action="@{/login}" method="post" class="vstack gap-3">
+            <div>
+                <label class="form-label" for="email">Email</label>
+                <input id="email" class="form-control" type="email" name="email" required autofocus>
+            </div>
+            <div>
+                <label class="form-label" for="password">Password</label>
+                <input id="password" class="form-control" type="password" name="password" required>
+            </div>
+            <button class="btn btn-primary w-100" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        </form>
+        <a class="d-inline-block mt-3" th:href="@{/register}">Create student account</a>
+    </section>
+</main>
+</body>
+</html>
