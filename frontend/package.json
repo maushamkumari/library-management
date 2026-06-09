@@ -4,6 +4,9 @@
   "description": "Premium Library Management System - SaaS Grade UI",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20 <25"
+  },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
