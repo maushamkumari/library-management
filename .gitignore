@@ -5,3 +5,5 @@ logs/
 *.log
 .env
 firebase-service-account*.json
+node_modules/
+frontend/node_modules/
